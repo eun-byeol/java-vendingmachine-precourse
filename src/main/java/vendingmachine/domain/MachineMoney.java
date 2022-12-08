@@ -17,13 +17,13 @@ public class MachineMoney {
         try {
             return Integer.parseInt(inputMoney);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(MACHINE_MONEY_NOT_INTEGER);
+            throw new IllegalArgumentException(MONEY_NOT_INTEGER);
         }
     }
 
     private void validatePositiveNumber(int money) {
         if (money <= 0) {
-            throw new IllegalArgumentException(MACHINE_MONEY_NOT_POSITIVE_NUMBER);
+            throw new IllegalArgumentException(MONEY_NOT_POSITIVE_NUMBER);
         }
     }
 
