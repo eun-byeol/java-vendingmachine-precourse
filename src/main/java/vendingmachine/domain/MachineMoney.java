@@ -32,4 +32,8 @@ public class MachineMoney {
             throw new IllegalArgumentException(MACHINE_MONEY_COULD_BE_DIVIDED_BY_TEN);
         }
     }
+
+    public int getMachineMoney() {
+        return machineMoney;
+    }
 }
