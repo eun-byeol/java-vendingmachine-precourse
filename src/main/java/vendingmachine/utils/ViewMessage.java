@@ -8,4 +8,5 @@ public class ViewMessage {
 
     public static final String OUTPUT_VENDING_MACHINE_COINS = "\n자판기가 보유한 동전";
     public static final String OUTPUT_COIN_AMOUNT = "%d원 - %d개\n";
+    public static final String OUTPUT_CUSTOMER_MONEY = "투입 금액: %d원\n";
 }
