@@ -19,4 +19,9 @@ public class InputView {
         System.out.println(INPUT_CUSTOMER_MONEY);
         return Console.readLine();
     }
+
+    public static String readProductNameToBuy() {
+        System.out.println(INPUT_PRODUCT_NAME_TO_BUY);
+        return Console.readLine();
+    }
 }
