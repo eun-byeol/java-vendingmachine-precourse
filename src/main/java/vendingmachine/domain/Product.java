@@ -79,7 +79,15 @@ public class Product {
         return price;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public boolean isOutOfStock() {
+        return quantity < 1;
+    }
+
+    public boolean isNotEnoughMoney(int money) {
+        return price > money;
+    }
+
+    public void subOneFromQuantity() {
+        this.quantity--;
     }
 }
