@@ -2,8 +2,8 @@ package vendingmachine.utils;
 
 public class ErrorMassage {
     private static final String ERROR_TAG = "[ERROR] ";
-    public static final String MACHINE_MONEY_NOT_INTEGER = ERROR_TAG + "금액은 정수여야 합니다.";
-    public static final String MACHINE_MONEY_NOT_POSITIVE_NUMBER = ERROR_TAG + "자판기 보유 금액은 0보다 커야 합니다.";
+    public static final String MONEY_NOT_INTEGER = ERROR_TAG + "금액은 정수여야 합니다.";
+    public static final String MONEY_NOT_POSITIVE_NUMBER = ERROR_TAG + "금액은 0보다 커야 합니다.";
     public static final String MACHINE_MONEY_COULD_BE_DIVIDED_BY_TEN = ERROR_TAG + "자판기 보유 금액은 10원으로 나누어 떨어져야 합니다.";
 
 
@@ -13,5 +13,4 @@ public class ErrorMassage {
     public static final String PRODUCT_PRICE_RANGE_HAS_TO_OVER_100 = ERROR_TAG + "상품 가격은 100원 이상이어야 합니다.";
     public static final String PRODUCT_PRICE_COULD_BE_DIVIDED_BY_TEN = ERROR_TAG + "상품 가격은 10원으로 나누어 떨어져야 합니다.";
     public static final String PRODUCT_QUANTITY_NOT_POSITIVE_NUMBER = ERROR_TAG + "상품 수량은 최소 1개 이상이어야 합니다.";
-
 }
