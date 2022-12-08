@@ -24,4 +24,12 @@ public class CustomerMoney {
             throw new IllegalArgumentException(MONEY_NOT_POSITIVE_NUMBER);
         }
     }
+
+    public int getCustomerMoney() {
+        return customerMoney;
+    }
+
+    public void subPriceFromCustomerMoney(int price) {
+        customerMoney -= price;
+    }
 }
