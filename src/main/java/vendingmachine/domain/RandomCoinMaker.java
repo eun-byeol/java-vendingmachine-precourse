@@ -13,8 +13,8 @@ public class RandomCoinMaker {
             Coin.COIN_10.getAmount()
     );
 
-    private Map<Coin, Integer> initCoins() {
-        Map<Coin, Integer> coins = new HashMap<>();
+    private LinkedHashMap<Coin, Integer> initCoins() {
+        LinkedHashMap<Coin, Integer> coins = new LinkedHashMap<>();
         coins.put(Coin.COIN_500, 0);
         coins.put(Coin.COIN_100, 0);
         coins.put(Coin.COIN_50, 0);
@@ -22,8 +22,8 @@ public class RandomCoinMaker {
         return coins;
     }
 
-    public Map<Coin, Integer> createRandomCoins(int money) {
-        Map<Coin, Integer> coins = initCoins();
+    public LinkedHashMap<Coin, Integer> createRandomCoins(int money) {
+        LinkedHashMap<Coin, Integer> coins = initCoins();
         while (money >= 50) {
             int randomCoin = pickRandomNumber();
             if (money > randomCoin) {
