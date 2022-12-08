@@ -1,4 +1,6 @@
-package vendingmachine;
+package vendingmachine.enums;
+
+import java.util.Arrays;
 
 public enum Coin {
     COIN_500(500),
@@ -12,5 +14,14 @@ public enum Coin {
         this.amount = amount;
     }
 
-    // 추가 기능 구현
+    public static Coin selectCoinByAmount(int amount) {
+        return Arrays.stream(Coin.values())
+                .filter(coin -> coin.amount == amount)
+                .findAny()
+                .orElseThrow(() -> new IllegalArgumentException());
+    }
+
+    public int getAmount() {
+        return amount;
+    }
 }
