@@ -1,7 +1,6 @@
 package vendingmachine.domain;
 
 import vendingmachine.enums.Coin;
-import vendingmachine.view.OutputView;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -16,9 +15,5 @@ public class MachineCoins {
 
     public Map<Coin, Integer> getCoins() {
         return coins;
-    }
-
-    public static void main(String[] args) {
-        OutputView.printVendingMachineCoins(new MachineCoins(450).getCoins());
     }
 }
