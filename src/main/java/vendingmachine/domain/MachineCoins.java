@@ -16,4 +16,28 @@ public class MachineCoins {
     public Map<Coin, Integer> getCoins() {
         return coins;
     }
+
+    public LinkedHashMap<Coin, Integer> giveChange(int money) {
+        LinkedHashMap<Coin, Integer> changes = new LinkedHashMap<>();
+        for (Coin key : coins.keySet()) {
+            int count = money / key.getAmount();
+            if (count == 0 || coins.get(key) == 0) {
+                continue;
+            }
+            if (coins.get(key) < count) {
+                count = coins.get(key);
+            }
+            changes.put(key, count);
+            subNumberFromCoinValue(key, count);
+            money -= key.getAmount() * count;
+        }
+        return changes;
+    }
+
+    private void subNumberFromCoinValue(Coin key, int subNumber) {
+        coins.put(
+                key,
+                coins.get(key) - subNumber
+        );
+    }
 }
