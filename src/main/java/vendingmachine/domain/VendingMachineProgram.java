@@ -1,5 +1,7 @@
 package vendingmachine.domain;
 
+import java.util.LinkedHashMap;
+
 import static vendingmachine.utils.ErrorMassage.*;
 
 public class VendingMachineProgram {
@@ -31,6 +33,10 @@ public class VendingMachineProgram {
         }
         productToBuy.subOneFromQuantity();
         customerMoney.subPriceFromCustomerMoney(productToBuy.getPrice());
+    }
+
+    public LinkedHashMap returnChanges() {
+        return machineCoins.giveChange(customerMoney.getCustomerMoney());
     }
 
     private Product validateCorrectProductName(String productName) {
