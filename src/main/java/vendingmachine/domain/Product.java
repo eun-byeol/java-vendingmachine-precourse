@@ -4,6 +4,7 @@ import vendingmachine.enums.Coin;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import static vendingmachine.utils.ErrorMassage.*;
 
@@ -13,6 +14,8 @@ public class Product {
     private int quantity;
 
     public Product(String productInformation) {
+        validateSeparator(productInformation);
+
         String[] splitInputs = productInformation.split(",");
         List<String> inputs = new ArrayList<>();
 
@@ -23,6 +26,12 @@ public class Product {
         this.name = validateName(inputs.get(0));
         this.price = validatePrice(inputs.get(1));
         this.quantity = validateQuantity(inputs.get(2));
+    }
+
+    private void validateSeparator(String input) {
+        if (!Pattern.matches("^.*,.*,.*$", input)) {
+            throw new IllegalArgumentException(PRODUCT_SEPARATOR_COMMA);
+        }
     }
 
     private String validateName(String name) {
