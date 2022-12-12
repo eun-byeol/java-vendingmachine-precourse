@@ -1,13 +1,16 @@
 package vendingmachine.domain;
 
+import vendingmachine.enums.Coin;
+
 import java.util.LinkedHashMap;
+import java.util.Map;
 
 import static vendingmachine.utils.ErrorMassage.*;
 
 public class VendingMachineProgram {
     private MachineMoney machineMoney;
     private MachineCoins machineCoins;
-    private SaleProducts saleProducts;
+    private SalesProducts saleProducts;
     private CustomerMoney customerMoney;
 
     public VendingMachineProgram(String money) {
@@ -16,7 +19,7 @@ public class VendingMachineProgram {
     }
 
     public void fillUpSaleProducts(String productInformation) {
-        saleProducts = new SaleProducts(productInformation);
+        saleProducts = new SalesProducts(productInformation);
     }
 
     public void putCustomerMoney(String customerMoney) {
@@ -35,8 +38,16 @@ public class VendingMachineProgram {
         customerMoney.subPriceFromCustomerMoney(productToBuy.getPrice());
     }
 
-    public LinkedHashMap returnChanges() {
+    public LinkedHashMap<Coin, Integer> returnChanges() {
         return machineCoins.giveChange(customerMoney.getCustomerMoney());
+    }
+
+    public boolean isAllSoldOut() {
+        return saleProducts.isAllSoldOut();
+    }
+
+    public boolean isNotEnoughCustomerMoney() {
+        return customerMoney.getCustomerMoney() < saleProducts.returnPriceOfCheapestProduct();
     }
 
     private Product validateCorrectProductName(String productName) {
@@ -46,5 +57,13 @@ public class VendingMachineProgram {
             }
         }
         throw new IllegalArgumentException(PRODUCT_NAME_IS_NOT_VALID);
+    }
+
+    public Map<Coin, Integer> getMachineCoins() {
+        return machineCoins.getCoins();
+    }
+
+    public int getCustomerMoney() {
+        return customerMoney.getCustomerMoney();
     }
 }
