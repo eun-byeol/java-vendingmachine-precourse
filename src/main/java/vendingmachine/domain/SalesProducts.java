@@ -1,26 +1,37 @@
 package vendingmachine.domain;
 
-import vendingmachine.view.InputView;
-
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
-public class SaleProducts {
+import static vendingmachine.utils.ErrorMassage.*;
+
+public class SalesProducts {
     private List<Product> products = new ArrayList<>();
 
-    public SaleProducts(String input) {
+    public SalesProducts(String input) throws IllegalArgumentException {
         String[] splitInputs = input.split(";");
-        List<String> inputs = new ArrayList<>();
-
-        for (String information : splitInputs) {
-            inputs.add(information.replace("[", "")
-                            .replace("]", "")
-                            .trim());
-        }
+        List<String> inputs = addInformationToInputs(splitInputs);
 
         for (String unit : inputs) {
+            System.out.println(">" + unit);
             this.products.add(new Product(unit));
         }
+    }
+
+    private List<String> addInformationToInputs(String[] splitInputs) {
+        List<String> inputs = new ArrayList<>();
+        for (String information : splitInputs) {
+            String replaced = information.replace("[", "")
+                    .replace("]", "");
+
+            if (information.length() - 2 != replaced.length()) {
+                throw new IllegalArgumentException(PRODUCT_SEPARATOR_SQUARE_BRACKETS);
+            }
+
+            inputs.add(replaced.trim());
+        }
+        return inputs;
     }
 
     public int returnPriceOfCheapestProduct() {
